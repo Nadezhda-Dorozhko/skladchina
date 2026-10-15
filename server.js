@@ -7,7 +7,7 @@ const profileRouter = require("./routes/profile");
 const adminRouter = require("./routes/admin");
 
 if (!process.env.JWT_SECRET) {
-  console.error("Не задана переменная окружения JWT_SECRET (см. .env.example)");
+  console.error("Не задана переменная окружения JWT_SECRET ");
   process.exit(1);
 }
 

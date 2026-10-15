@@ -5,7 +5,6 @@ const { User } = require("../models");
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD_LENGTH = 6;
 
-// POST /auth/register
 async function register(req, res, next) {
   try {
     const { email, password } = req.body;
@@ -88,7 +87,6 @@ async function login(req, res, next) {
   }
 }
 
-// GET /profile  (и алиас GET /auth/me) — данные текущего пользователя
 async function getProfile(req, res, next) {
   try {
     const user = await User.findByPk(req.user.id);

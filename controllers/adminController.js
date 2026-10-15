@@ -1,6 +1,5 @@
 const { User } = require("../models");
 
-// GET /admin/users — список всех пользователей (только admin)
 async function listUsers(req, res, next) {
   try {
     const users = await User.findAll({
@@ -13,7 +12,6 @@ async function listUsers(req, res, next) {
   }
 }
 
-// PATCH /admin/users/:id/role — смена роли пользователя (только admin)
 async function setRole(req, res, next) {
   try {
     const { role } = req.body;
