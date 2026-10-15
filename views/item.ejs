@@ -1,0 +1,16 @@
+<%- include('partials/header', { title: purchase.title }) %>
+<h1><%= purchase.title %></h1>
+
+<dl class="details">
+  <dt>Номер</dt><dd><%= purchase.id %></dd>
+  <dt>Описание</dt><dd><%= purchase.description || 'не указано' %></dd>
+  <dt>Организатор</dt><dd><%= purchase.organizer %></dd>
+  <dt>Целевая сумма</dt><dd><%= purchase.targetAmount %></dd>
+  <dt>Собранная сумма</dt><dd><%= purchase.currentAmount %></dd>
+  <dt>Участников</dt><dd><%= purchase.participantsCount %></dd>
+  <dt>Срок завершения</dt><dd><%= purchase.deadline %></dd>
+  <dt>Статус</dt><dd><%= purchase.status === 'completed' ? 'Завершена' : 'Активна' %></dd>
+  <dt>Время создания</dt><dd><%= formatDate(purchase.createdAt) %></dd>
+</dl>
+<p><a class="btn" href="/<%= authQuery %>">К списку</a></p>
+<%- include('partials/footer') %>

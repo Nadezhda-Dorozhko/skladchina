@@ -1,0 +1,39 @@
+<%- include('partials/header', { title: 'Список складчин' }) %>
+<h1>Список складчин</h1>
+
+<% if (purchases.length === 0) { %>
+  <p class="empty">Складчин пока нет.</p>
+<% } else { %>
+  <table>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Название</th>
+        <th>Организатор</th>
+        <th>Собрано / цель</th>
+        <th>Статус</th>
+        <th>Время создания</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% purchases.forEach(function (p) { %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><a href="/item/<%= p.id %><%= authQuery %>"><%= p.title %></a></td>
+          <td><%= p.organizer %></td>
+          <td><%= p.currentAmount %> / <%= p.targetAmount %></td>
+          <td>
+            <% if (p.status === 'completed') { %>
+              <span class="badge done">Завершена</span>
+            <% } else { %>
+              <span class="badge active">Активна</span>
+            <% } %>
+          </td>
+          <td><%= formatDate(p.createdAt) %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>
+<p><a class="btn" href="/add<%= authQuery %>">Добавить складчину</a></p>
+<%- include('partials/footer') %>

@@ -1,0 +1,47 @@
+<%- include('partials/header', { title: 'Новая складчина' }) %>
+<h1>Добавление складчины</h1>
+
+<% if (Object.keys(errors).length > 0) { %>
+  <div class="errors">
+    <p>Форма не отправлена. Исправьте ошибки:</p>
+    <ul>
+      <% Object.values(errors).forEach(function (msg) { %>
+        <li><%= msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="POST" action="/add<%= authQuery %>" novalidate>
+  <div class="form-grid">
+    <label class="wide">Название (до <%= limits.title.max %> символов)
+      <input type="text" name="title" value="<%= form.title %>">
+    </label>
+    <label>Организатор (до <%= limits.organizer.max %> символов)
+      <input type="text" name="organizer" value="<%= form.organizer %>">
+    </label>
+    <label>Срок завершения
+      <input type="date" name="deadline" value="<%= form.deadline %>">
+    </label>
+    <label class="wide">Описание (до <%= limits.description.max %> символов, необязательно)
+      <textarea name="description" rows="2"><%= form.description %></textarea>
+    </label>
+    <label>Целевая сумма
+      <input type="text" name="targetAmount" value="<%= form.targetAmount %>">
+    </label>
+    <label>Собранная сумма
+      <input type="text" name="currentAmount" value="<%= form.currentAmount %>">
+    </label>
+    <label>Количество участников
+      <input type="text" name="participantsCount" value="<%= form.participantsCount %>">
+    </label>
+    <label>Статус
+      <select name="status">
+        <option value="active" <%= form.status !== 'completed' ? 'selected' : '' %>>Активна</option>
+        <option value="completed" <%= form.status === 'completed' ? 'selected' : '' %>>Завершена</option>
+      </select>
+    </label>
+  </div>
+  <button type="submit" class="btn">Добавить</button>
+</form>
+<%- include('partials/footer') %>

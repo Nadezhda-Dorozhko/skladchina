@@ -1,11 +1,9 @@
 const Purchase = require("../models/purchase");
 
-// GET /purchases
 function getAllPurchases(req, res) {
   res.status(200).json(Purchase.getAll());
 }
 
-// GET /purchases/:id
 function getPurchaseById(req, res) {
   const id = Number(req.params.id);
   const purchase = Purchase.getById(id);
@@ -16,7 +14,6 @@ function getPurchaseById(req, res) {
   res.status(200).json(purchase);
 }
 
-// POST /purchases
 function createPurchase(req, res) {
   const { title, organizer, targetAmount, deadline } = req.body;
 
@@ -37,7 +34,6 @@ function createPurchase(req, res) {
   res.status(201).json(newPurchase);
 }
 
-// PUT /purchases/:id
 function updatePurchase(req, res) {
   const id = Number(req.params.id);
   const { title, organizer, targetAmount, deadline } = req.body;
@@ -57,7 +53,6 @@ function updatePurchase(req, res) {
   res.status(200).json(updated);
 }
 
-// DELETE /purchases/:id
 function deletePurchase(req, res) {
   const id = Number(req.params.id);
   const success = Purchase.remove(id);

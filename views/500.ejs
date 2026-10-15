@@ -1,0 +1,9 @@
+<%- include('partials/header', { title: 'Внутренняя ошибка сервера' }) %>
+<div class="error-page">
+  <h1>500</h1>
+  <p>Внутренняя ошибка сервера.</p>
+  <p><%= message %></p>
+  <p class="details-text">Техническое описание: <code><%= details %></code></p>
+  <a class="btn" href="/<%= authQuery %>">Вернуться на главную</a>
+</div>
+<%- include('partials/footer') %>

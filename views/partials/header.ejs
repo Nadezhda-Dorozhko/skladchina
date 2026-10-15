@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> — Складчина</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/<%= authQuery %>">Складчина</a>
+    <nav>
+      <a href="/<%= authQuery %>">Главная</a>
+      <a href="/add<%= authQuery %>">Добавить складчину</a>
+    </nav>
+    <span class="user">Пользователь: <strong><%= user.name %></strong></span>
+  </header>
+  <main>

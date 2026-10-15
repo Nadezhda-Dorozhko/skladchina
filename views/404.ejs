@@ -1,0 +1,8 @@
+<%- include('partials/header', { title: 'Страница не найдена' }) %>
+<div class="error-page">
+  <h1>404</h1>
+  <p>Страница <code><%= url %></code> не найдена.</p>
+  <p>Возможно, адрес введён с ошибкой или складчина с таким номером не существует.</p>
+  <a class="btn" href="/<%= authQuery %>">Вернуться на главную</a>
+</div>
+<%- include('partials/footer') %>

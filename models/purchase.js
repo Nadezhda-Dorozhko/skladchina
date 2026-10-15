@@ -13,6 +13,7 @@ let purchases = [
     participantsCount: 3,
     deadline: "2026-09-30",
     status: "active",
+    createdAt: "2026-10-01T09:15:42.318Z",
   },
   {
     id: 2,
@@ -24,10 +25,19 @@ let purchases = [
     participantsCount: 5,
     deadline: "2026-08-15",
     status: "completed",
+    createdAt: "2026-10-05T14:02:11.906Z",
   },
 ];
 
 let nextId = 3;
+
+// Время создания уникально для каждой складчины: если оно совпало бы
+// с предыдущим с точностью до миллисекунды, оно сдвигается на 1 мс.
+let lastCreatedAt = Math.max(...purchases.map((p) => Date.parse(p.createdAt)));
+function uniqueCreatedAt() {
+  lastCreatedAt = Math.max(Date.now(), lastCreatedAt + 1);
+  return new Date(lastCreatedAt).toISOString();
+}
 
 module.exports = {
   getAll: () => purchases,
@@ -45,6 +55,7 @@ module.exports = {
       participantsCount: data.participantsCount || 0,
       deadline: data.deadline,
       status: data.status || "active",
+      createdAt: uniqueCreatedAt(),
     };
     purchases.push(newPurchase);
     return newPurchase;
