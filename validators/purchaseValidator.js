@@ -77,6 +77,12 @@ function validatePurchase(body) {
     errors.deadline = `${LABELS.deadline}: некорректная дата.`;
   }
 
+  // Если собранная сумма превышает целевую, складчина обязательно завершена.
+  if (data.targetAmount !== null && data.currentAmount !== null &&
+      data.currentAmount > data.targetAmount) {
+    data.status = "completed";
+  }
+
   return { errors, data, valid: Object.keys(errors).length === 0 };
 }
 

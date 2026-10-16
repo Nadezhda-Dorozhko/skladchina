@@ -38,6 +38,9 @@ a:hover { color: var(--primary-dark); }
   background: linear-gradient(90deg, #2b3a8c, var(--primary));
   color: #fff;
   box-shadow: 0 2px 8px rgba(30, 40, 90, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .site-header a { color: #fff; text-decoration: none; }
 .site-header .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.3px; }
@@ -57,7 +60,7 @@ a:hover { color: var(--primary-dark); }
 /* Основная карточка */
 main {
   width: 100%;
-  max-width: 980px;
+  max-width: 1080px;
   margin: 32px auto;
   padding: 32px 40px;
   background: var(--card);
@@ -77,8 +80,8 @@ table {
   border-radius: 10px;
   overflow: hidden;
 }
-th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-th { background: #eef1fb; font-size: 14px; text-transform: uppercase; letter-spacing: 0.4px; color: #3b4468; }
+th, td { padding: 12px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: #eef1fb; font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px; color: #3b4468; }
 tbody tr:last-child td { border-bottom: 0; }
 tbody tr:hover { background: #f7f8fd; }
 td:last-child { white-space: nowrap; }
@@ -166,7 +169,7 @@ form input:focus, form textarea:focus, form select:focus {
 /* Подвал */
 .site-footer {
   width: 100%;
-  max-width: 980px;
+  max-width: 1080px;
   margin: 0 auto 28px;
   padding: 0 40px;
   display: flex;

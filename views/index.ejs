@@ -12,6 +12,7 @@
         <th>Организатор</th>
         <th>Собрано / цель</th>
         <th>Статус</th>
+        <th>Срок завершения</th>
         <th>Время создания</th>
       </tr>
     </thead>
@@ -29,6 +30,7 @@
               <span class="badge active">Активна</span>
             <% } %>
           </td>
+          <td><%= formatDay(p.deadline) %></td>
           <td><%= formatDate(p.createdAt) %></td>
         </tr>
       <% }) %>

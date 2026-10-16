@@ -8,7 +8,7 @@
   <dt>Целевая сумма</dt><dd><%= purchase.targetAmount %></dd>
   <dt>Собранная сумма</dt><dd><%= purchase.currentAmount %></dd>
   <dt>Участников</dt><dd><%= purchase.participantsCount %></dd>
-  <dt>Срок завершения</dt><dd><%= purchase.deadline %></dd>
+  <dt>Срок завершения</dt><dd><%= formatDay(purchase.deadline) %></dd>
   <dt>Статус</dt><dd><%= purchase.status === 'completed' ? 'Завершена' : 'Активна' %></dd>
   <dt>Время создания</dt><dd><%= formatDate(purchase.createdAt) %></dd>
 </dl>

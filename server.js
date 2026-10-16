@@ -34,6 +34,10 @@ app.use((req, res, next) => {
       second: "2-digit",
       fractionalSecondDigits: 3,
     });
+  res.locals.formatDay = (day) => {
+    const [y, m, d] = String(day).split("-");
+    return d && m && y ? `${d}.${m}.${y}` : day;
+  };
   next();
 });
 
