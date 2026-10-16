@@ -14,5 +14,8 @@
       <a href="/add<%= authQuery %>">Добавить складчину</a>
     </nav>
     <span class="user">Пользователь: <strong><%= user.name %></strong></span>
+    <% if (user.isAuth) { %>
+      <a class="logout" href="/">Выйти</a>
+    <% } %>
   </header>
   <main>
