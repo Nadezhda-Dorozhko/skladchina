@@ -24,6 +24,7 @@ body {
   line-height: 1.5;
   background: var(--bg);
   color: var(--text);
+  padding-top: 70px; /* место под закреплённую шапку */
 }
 
 a { color: var(--primary); }
@@ -38,9 +39,11 @@ a:hover { color: var(--primary-dark); }
   background: linear-gradient(90deg, #2b3a8c, var(--primary));
   color: #fff;
   box-shadow: 0 2px 8px rgba(30, 40, 90, 0.25);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 .site-header a { color: #fff; text-decoration: none; }
 .site-header .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.3px; }
