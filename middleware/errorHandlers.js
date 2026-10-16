@@ -3,6 +3,16 @@ const FALLBACK_500 =
   "<!DOCTYPE html><html lang=\"ru\"><head><meta charset=\"utf-8\"><title>500</title></head>" +
   "<body><h1>500</h1><p>Внутренняя ошибка сервера.</p><a href=\"/\">На главную</a></body></html>";
 
+// Текст ошибки. У AggregateError (несколько неудачных попыток подключения,
+// например к ::1 и 127.0.0.1) свойство message пустое, причины лежат в err.errors.
+function describeError(err) {
+  if (err && err.message) return err.message;
+  if (err && Array.isArray(err.errors) && err.errors.length > 0) {
+    return err.errors.map((e) => e.message || e.code || String(e)).join("; ");
+  }
+  return (err && (err.code || err.name)) || "причина не определена";
+}
+
 // 404: подходит для любого запроса, который не обработали маршруты выше.
 function notFoundHandler(req, res) {
   res.status(404).render("404", { url: req.originalUrl });
@@ -20,7 +30,7 @@ function serverErrorHandler(err, req, res, next) {
 
   const data = {
     message: err.userMessage || "Во время обработки запроса произошла непредвиденная ошибка.",
-    details: err.message,
+    details: describeError(err),
   };
 
   // Если не удалось отрисовать 500.ejs, отправляется запасная HTML-страница, а не обычный текст.
@@ -33,4 +43,4 @@ function serverErrorHandler(err, req, res, next) {
   });
 }
 
-module.exports = { notFoundHandler, serverErrorHandler };
+module.exports = { notFoundHandler, serverErrorHandler, describeError };

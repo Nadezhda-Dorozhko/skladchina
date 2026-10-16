@@ -4,7 +4,7 @@ const pagesRouter = require("./routes/pages");
 const purchasesRouter = require("./routes/purchases");
 const requestLogger = require("./middleware/logger");
 const fakeAuth = require("./middleware/auth");
-const { notFoundHandler, serverErrorHandler } = require("./middleware/errorHandlers");
+const { notFoundHandler, serverErrorHandler, describeError } = require("./middleware/errorHandlers");
 const { initDb } = require("./db");
 
 const app = express();
@@ -61,6 +61,6 @@ initDb()
     });
   })
   .catch((err) => {
-    console.error("Ошибка: не удалось подключиться к базе данных:", err.message);
+    console.error("Ошибка: не удалось подключиться к базе данных:", describeError(err));
     process.exit(1);
   });
