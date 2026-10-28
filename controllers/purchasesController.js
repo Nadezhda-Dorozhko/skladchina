@@ -1,9 +1,16 @@
+const { Op } = require("sequelize");
 const { Purchase, Participant } = require("../models");
 
+// GET /purchases?search=кофе - список складчин, поиск по названию (без учёта регистра).
+// Новые складчины идут первыми.
 async function getAllPurchases(req, res, next) {
   try {
+    const search = String(req.query.search ?? "").trim();
+    const where = search ? { title: { [Op.iLike]: `%${search}%` } } : {};
+
     const purchases = await Purchase.findAll({
-      order: [["id", "ASC"]],
+      where,
+      order: [["id", "DESC"]],
     });
     res.status(200).json(purchases);
   } catch (err) {

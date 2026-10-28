@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { sequelize } = require("./models");
 const purchasesRouter = require("./routes/purchases");
 const authRouter = require("./routes/auth");
@@ -14,6 +15,8 @@ if (!process.env.JWT_SECRET) {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Разрешаем запросы с React-приложения (другой порт - другой источник)
+app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
