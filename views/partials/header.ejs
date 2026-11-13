@@ -8,14 +8,22 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="/<%= authQuery %>">Складчина</a>
+    <a class="logo" href="/">Складчина</a>
     <nav>
-      <a href="/<%= authQuery %>">Главная</a>
-      <a href="/add<%= authQuery %>">Добавить складчину</a>
+      <a href="/">Главная</a>
+      <a href="/add">Добавить складчину</a>
     </nav>
-    <span class="user">Пользователь: <strong><%= user.name %></strong></span>
     <% if (user.isAuth) { %>
-      <a class="logout" href="/">Выйти</a>
+      <div class="header-account">
+        <span class="user"><strong><%= user.name %></strong></span>
+        <form method="POST" action="/logout">
+          <button type="submit" class="logout">Выйти</button>
+        </form>
+      </div>
+    <% } else { %>
+      <div class="header-account">
+        <a class="auth-link" href="/login">Войти</a>
+      </div>
     <% } %>
   </header>
   <main>

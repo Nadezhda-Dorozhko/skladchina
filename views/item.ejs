@@ -12,5 +12,5 @@
   <dt>Статус</dt><dd><%= purchase.status === 'completed' ? 'Завершена' : 'Активна' %></dd>
   <dt>Время создания</dt><dd><%= formatDate(purchase.createdAt) %></dd>
 </dl>
-<p><a class="btn" href="/<%= authQuery %>">К списку</a></p>
+<p><a class="btn" href="/">К списку</a></p>
 <%- include('partials/footer') %>

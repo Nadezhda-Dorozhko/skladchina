@@ -3,15 +3,21 @@ const path = require("path");
 const pagesRouter = require("./routes/pages");
 const purchasesRouter = require("./routes/purchases");
 const requestLogger = require("./middleware/logger");
-const fakeAuth = require("./middleware/auth");
-const { notFoundHandler, serverErrorHandler, describeError } = require("./middleware/errorHandlers");
-const { initDb } = require("./db");
+const cookieParser = require("cookie-parser");
+const { attachUser } = require("./middleware/auth");
+const {
+  notFoundHandler,
+  serverErrorHandler,
+  describeError,
+} = require("./middleware/errorHandlers");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
+
+app.use(requestLogger);
 
 // Встроенные middleware
 app.use(express.static(path.join(__dirname, "public")));
@@ -22,7 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 // чтобы страница 500 отрисовалась даже при ошибке в logger.
 app.use((req, res, next) => {
   res.locals.user = { name: "Гость", isAuth: false };
-  res.locals.authQuery = "";
   res.locals.formatDate = (iso) =>
     new Date(iso).toLocaleString("ru-RU", {
       timeZone: "Europe/Minsk",
@@ -42,8 +47,8 @@ app.use((req, res, next) => {
 });
 
 // Кастомные middleware
-app.use(requestLogger);
-app.use(fakeAuth);
+app.use(cookieParser());
+app.use(attachUser);
 
 // Маршруты
 app.use("/", pagesRouter);
@@ -53,14 +58,6 @@ app.use("/purchases", purchasesRouter);
 app.use(notFoundHandler);
 app.use(serverErrorHandler);
 
-// Сервер запускается только после успешного подключения к базе данных
-initDb()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Ошибка: не удалось подключиться к базе данных:", describeError(err));
-    process.exit(1);
-  });
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});

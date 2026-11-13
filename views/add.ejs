@@ -12,28 +12,28 @@
   </div>
 <% } %>
 
-<form method="POST" action="/add<%= authQuery %>" novalidate>
+<form method="POST" action="/add" novalidate>
   <div class="form-grid">
     <label class="wide">Название (до <%= limits.title.max %> символов)
-      <input type="text" name="title" value="<%= form.title %>">
+      <input type="text" name="title" value="<%= form.title %>" minlength="<%= limits.title.min %>" maxlength="<%= limits.title.max %>">
     </label>
     <label>Организатор (до <%= limits.organizer.max %> символов)
-      <input type="text" name="organizer" value="<%= form.organizer %>">
+      <input type="text" name="organizer" value="<%= form.organizer %>" minlength="<%= limits.organizer.min %>" maxlength="<%= limits.organizer.max %>">
     </label>
     <label>Срок завершения
-      <input type="date" name="deadline" value="<%= form.deadline %>">
+      <input type="date" name="deadline" value="<%= form.deadline %>" max="9999-12-31">
     </label>
     <label class="wide">Описание (до <%= limits.description.max %> символов, необязательно)
-      <textarea name="description" rows="2"><%= form.description %></textarea>
+      <textarea name="description" rows="2" maxlength="<%= limits.description.max %>"><%= form.description %></textarea>
     </label>
     <label>Целевая сумма
-      <input type="text" name="targetAmount" value="<%= form.targetAmount %>">
+      <input type="number" name="targetAmount" value="<%= form.targetAmount %>" min="<%= limits.targetAmount.min %>" max="<%= limits.targetAmount.max %>" step="any">
     </label>
     <label>Собранная сумма
-      <input type="text" name="currentAmount" value="<%= form.currentAmount %>">
+      <input type="number" name="currentAmount" value="<%= form.currentAmount %>" min="<%= limits.currentAmount.min %>" max="<%= limits.currentAmount.max %>" step="any">
     </label>
     <label>Количество участников
-      <input type="text" name="participantsCount" value="<%= form.participantsCount %>">
+      <input type="number" name="participantsCount" value="<%= form.participantsCount %>" min="<%= limits.participantsCount.min %>" max="<%= limits.participantsCount.max %>" step="1">
     </label>
     <label>Статус
       <select name="status">

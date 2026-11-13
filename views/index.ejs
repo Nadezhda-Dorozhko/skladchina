@@ -20,7 +20,7 @@
       <% purchases.forEach(function (p) { %>
         <tr>
           <td><%= p.id %></td>
-          <td><a href="/item/<%= p.id %><%= authQuery %>"><%= p.title %></a></td>
+          <td><a href="/item/<%= p.id %>"><%= p.title %></a></td>
           <td><%= p.organizer %></td>
           <td><%= p.currentAmount %> / <%= p.targetAmount %></td>
           <td>
@@ -37,5 +37,5 @@
     </tbody>
   </table>
 <% } %>
-<p><a class="btn" href="/add<%= authQuery %>">Добавить складчину</a></p>
+<p><a class="btn" href="/add">Добавить складчину</a></p>
 <%- include('partials/footer') %>

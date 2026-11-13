@@ -39,12 +39,7 @@ function addPurchase(req, res) {
   }
 
   Purchase.create(data);
-  res.redirect("/" + res.locals.authQuery);
+  res.redirect("/");
 }
 
-// Демонстрация страницы 500: обработчик намеренно выбрасывает ошибку.
-function triggerError(req, res, next) {
-  throw new Error("Тестовая ошибка для демонстрации страницы 500");
-}
-
-module.exports = { showIndex, showItem, showAddForm, addPurchase, triggerError };
+module.exports = { showIndex, showItem, showAddForm, addPurchase };

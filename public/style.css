@@ -12,7 +12,9 @@
   --success-bg: #e3f6e9;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -27,8 +29,12 @@ body {
   padding-top: 70px; /* место под закреплённую шапку */
 }
 
-a { color: var(--primary); }
-a:hover { color: var(--primary-dark); }
+a {
+  color: var(--primary);
+}
+a:hover {
+  color: var(--primary-dark);
+}
 
 /* Шапка */
 .site-header {
@@ -45,20 +51,61 @@ a:hover { color: var(--primary-dark); }
   right: 0;
   z-index: 1000;
 }
-.site-header a { color: #fff; text-decoration: none; }
-.site-header .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.3px; }
-.site-header nav { display: flex; gap: 6px; flex: 1; }
-.site-header nav a { padding: 6px 12px; border-radius: 6px; transition: background 0.15s; }
-.site-header nav a:hover { background: rgba(255, 255, 255, 0.18); }
-.site-header .user { font-size: 15px; opacity: 0.95; }
+.site-header a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-header .logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.site-header nav {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+.site-header nav a {
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.site-header nav a:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.site-header .user {
+  font-size: 15px;
+  opacity: 0.95;
+}
+.site-header .header-account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-header .auth-link {
+  padding: 6px 8px;
+  white-space: nowrap;
+}
 .site-header .logout {
+  background: transparent;
+  color: #fff;
   padding: 6px 16px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 6px;
+  font: inherit;
   font-size: 15px;
-  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
-.site-header .logout:hover { background: #fff; color: var(--primary-dark); }
+.site-header .logout:hover {
+  background: #fff;
+  color: var(--primary-dark);
+}
+.site-header .header-account form {
+  margin: 0;
+}
 
 /* Основная карточка */
 main {
@@ -71,7 +118,11 @@ main {
   box-shadow: 0 4px 18px rgba(30, 40, 90, 0.08);
   flex: 1 0 auto;
 }
-h1 { margin: 0 0 24px; font-size: 30px; line-height: 1.2; }
+h1 {
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 1.2;
+}
 
 /* Таблица */
 table {
@@ -83,16 +134,45 @@ table {
   border-radius: 10px;
   overflow: hidden;
 }
-th, td { padding: 12px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-th { background: #eef1fb; font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px; color: #3b4468; }
-tbody tr:last-child td { border-bottom: 0; }
-tbody tr:hover { background: #f7f8fd; }
-td:last-child { white-space: nowrap; }
+th,
+td {
+  padding: 12px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  background: #eef1fb;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #3b4468;
+}
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+tbody tr:hover {
+  background: #f7f8fd;
+}
+td:last-child {
+  white-space: nowrap;
+}
 
 /* Статусы */
-.badge { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
-.badge.active { background: var(--success-bg); color: var(--success); }
-.badge.done { background: #e8eaf0; color: #4b5563; }
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.badge.active {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.badge.done {
+  background: #e8eaf0;
+  color: #4b5563;
+}
 
 /* Кнопки */
 .btn {
@@ -106,10 +186,17 @@ td:last-child { white-space: nowrap; }
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s, transform 0.05s;
+  transition:
+    background 0.15s,
+    transform 0.05s;
 }
-.btn:hover { background: var(--primary-dark); color: #fff; }
-.btn:active { transform: translateY(1px); }
+.btn:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+.btn:active {
+  transform: translateY(1px);
+}
 
 /* Детальная страница */
 .details {
@@ -121,13 +208,32 @@ td:last-child { white-space: nowrap; }
   border-radius: 10px;
   overflow: hidden;
 }
-.details dt, .details dd { margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--border); }
-.details dt { background: #eef1fb; font-weight: 600; color: #3b4468; }
-.details dt:last-of-type, .details dd:last-of-type { border-bottom: 0; }
+.details dt,
+.details dd {
+  margin: 0;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.details dt {
+  background: #eef1fb;
+  font-weight: 600;
+  color: #3b4468;
+}
+.details dt:last-of-type,
+.details dd:last-of-type {
+  border-bottom: 0;
+}
 
 /* Форма */
-form label { display: block; margin-bottom: 18px; font-weight: 600; font-size: 15px; }
-form input, form textarea, form select {
+form label {
+  display: block;
+  margin-bottom: 18px;
+  font-weight: 600;
+  font-size: 15px;
+}
+form input,
+form textarea,
+form select {
   display: block;
   width: 100%;
   margin-top: 6px;
@@ -137,15 +243,44 @@ form input, form textarea, form select {
   background: #fff;
   border: 1px solid #c9cfdd;
   border-radius: 8px;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
-form input:focus, form textarea:focus, form select:focus {
+form input:focus,
+form textarea:focus,
+form select:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.18);
 }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-.form-grid .wide { grid-column: 1 / -1; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+.form-grid .wide {
+  grid-column: 1 / -1;
+}
+.account-page {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.account-page h1,
+.account-switch {
+  text-align: center;
+}
+.account-form {
+  width: 100%;
+}
+.account-page > .btn {
+  display: table;
+  margin: 0 auto;
+}
+.account-switch {
+  margin-top: 20px;
+}
 
 /* Ошибки валидации */
 .errors {
@@ -157,17 +292,47 @@ form input:focus, form textarea:focus, form select:focus {
   border-radius: 8px;
   color: #8a2a20;
 }
-.errors p { margin: 0 0 6px; font-weight: 600; }
-.errors ul { margin: 0; padding-left: 20px; }
+.errors p {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+.errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
 
 /* Страницы 404 и 500 */
-.error-page { text-align: center; padding: 28px 0 12px; }
-.error-page h1 { margin: 0; font-size: 96px; line-height: 1; color: var(--primary); }
-.error-page p { margin: 12px 0; color: #374151; }
-.error-page code, .details-text code { padding: 2px 8px; background: #eef1fb; border-radius: 5px; font-size: 14px; }
-.error-page .btn { margin-top: 14px; }
-.details-text { font-size: 14px; color: var(--muted); }
-.empty { color: var(--muted); }
+.error-page {
+  text-align: center;
+  padding: 28px 0 12px;
+}
+.error-page h1 {
+  margin: 0;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--primary);
+}
+.error-page p {
+  margin: 12px 0;
+  color: #374151;
+}
+.error-page code,
+.details-text code {
+  padding: 2px 8px;
+  background: #eef1fb;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.error-page .btn {
+  margin-top: 14px;
+}
+.details-text {
+  font-size: 14px;
+  color: var(--muted);
+}
+.empty {
+  color: var(--muted);
+}
 
 /* Подвал */
 .site-footer {
@@ -179,4 +344,43 @@ form input:focus, form textarea:focus, form select:focus {
   justify-content: flex-end;
   font-size: 14px;
   color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  body {
+    padding-top: 112px;
+  }
+  .site-header {
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    padding: 10px 16px;
+  }
+  .site-header nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .site-header nav a {
+    padding: 6px 8px;
+  }
+  .site-header .header-account {
+    margin-left: auto;
+    gap: 8px;
+  }
+  main {
+    margin: 18px auto;
+    padding: 24px 18px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid .wide {
+    grid-column: auto;
+  }
+  .details {
+    grid-template-columns: 130px 1fr;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
 }

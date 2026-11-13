@@ -4,5 +4,6 @@
   "description": { "max": 500 },
   "targetAmount": { "min": 0, "max": 1000000 },
   "currentAmount": { "min": 0, "max": 1000000 },
-  "participantsCount": { "min": 0, "max": 1000 }
+  "participantsCount": { "min": 0, "max": 1000 },
+  "requestUrl": { "max": 1000 }
 }
